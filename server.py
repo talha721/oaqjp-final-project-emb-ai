@@ -1,6 +1,6 @@
 """
 Emotion Detection Flask Application Server.
-Provides web routes to process emotion detection on input text.
+Provides web application endpoints for analyzing text emotions.
 """
 
 from flask import Flask, render_template, request
@@ -33,7 +33,7 @@ def emo_detector():
 @app.route("/")
 def render_index_page():
     """
-    Renders the main web interface.
+    Renders the main application index page.
     """
     return render_template('index.html')
 

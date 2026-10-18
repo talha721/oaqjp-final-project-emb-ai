@@ -8,6 +8,7 @@ def emotion_detector(text_to_analyze):
     
     response = requests.post(url, json=myobj, headers=headers)
     
+    # Handle status code 400 for blank or invalid text entries
     if response.status_code == 400:
         return {
             'anger': None,
@@ -20,11 +21,8 @@ def emotion_detector(text_to_analyze):
     
     formatted_response = json.loads(response.text)
     emotions = formatted_response['emotionPredictions'][0]['emotion']
-    
-    # Identify the emotion with the highest score
     dominant_emotion = max(emotions, key=emotions.get)
     
-    # Return the required output dictionary format
     return {
         'anger': emotions['anger'],
         'disgust': emotions['disgust'],
